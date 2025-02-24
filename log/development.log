@@ -1,0 +1,40 @@
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY) /*application='MiApi'*/[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='MiApi'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MiApi'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2025-02-24 22:15:30.355214', '2025-02-24 22:15:30.355222') RETURNING "key" /*application='MiApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MiApi'*/[0m
+Migrating to CreateCars (20250224221422)
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MiApi'*/[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "cars" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "modelo" varchar, "placa" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='MiApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20250224221422') RETURNING "version" /*application='MiApi'*/[0m
+  [1m[36mTRANSACTION (2.8ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MiApi'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MiApi'*/[0m
+  [1m[36mCar Load (64.6ms)[0m  [1m[34mSELECT "cars".* FROM "cars" /* loading for pp */ LIMIT 11 /*application='MiApi'*/[0m
+  [1m[36mTRANSACTION (7.3ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MiApi'*/[0m
+  [1m[36mCar Create (21.2ms)[0m  [1m[32mINSERT INTO "cars" ("modelo", "placa", "created_at", "updated_at") VALUES ('ford mustang', 'WFR432', '2025-02-24 22:21:47.642772', '2025-02-24 22:21:47.642772') RETURNING "id" /*application='MiApi'*/[0m
+  [1m[36mTRANSACTION (16.8ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MiApi'*/[0m
+  [1m[36mCar Load (6.3ms)[0m  [1m[34mSELECT "cars".* FROM "cars" /* loading for pp */ LIMIT 11 /*application='MiApi'*/[0m
+  [1m[36mTRANSACTION (7.5ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MiApi'*/[0m
+  [1m[36mCar Create (19.3ms)[0m  [1m[32mINSERT INTO "cars" ("modelo", "placa", "created_at", "updated_at") VALUES ('Nissan GT-R', 'ABC123', '2025-02-24 22:24:59.733696', '2025-02-24 22:24:59.733696') RETURNING "id" /*application='MiApi'*/[0m
+  [1m[36mTRANSACTION (2.6ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MiApi'*/[0m
+  [1m[36mCar Load (3.8ms)[0m  [1m[34mSELECT "cars".* FROM "cars" /* loading for pp */ LIMIT 11 /*application='MiApi'*/[0m
+Started GET "/cars" for 172.17.0.1 at 2025-02-24 22:35:35 +0000
+  [1m[36mActiveRecord::SchemaMigration Load (4.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MiApi'*/[0m
+Processing by CarsController#index as HTML
+  [1m[36mCar Load (36.5ms)[0m  [1m[34mSELECT "cars".* FROM "cars" /*action='index',application='MiApi',controller='cars'*/[0m
+  ↳ app/controllers/cars_controller.rb:4:in `index'
+Completed 200 OK in 472ms (Views: 68.8ms | ActiveRecord: 44.9ms (1 query, 0 cached) | GC: 57.9ms)
+
+
+Started GET "/favicon.ico" for 172.17.0.1 at 2025-02-24 22:35:36 +0000
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started GET "/cars/2" for 172.17.0.1 at 2025-02-24 22:35:47 +0000
+Processing by CarsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mCar Load (2.3ms)[0m  [1m[34mSELECT "cars".* FROM "cars" WHERE "cars"."id" = 2 LIMIT 1 /*action='show',application='MiApi',controller='cars'*/[0m
+  ↳ app/controllers/cars_controller.rb:8:in `show'
+Completed 200 OK in 53ms (Views: 0.8ms | ActiveRecord: 2.3ms (1 query, 0 cached) | GC: 1.7ms)
+
+
